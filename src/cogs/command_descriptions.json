@@ -1,3 +1,4 @@
 {
-    "ping": "Saying pong and check the bot latency"
+    "ping": "Saying pong and check the bot latency",
+    "weather": "Show the temprature of a certain city"
 }

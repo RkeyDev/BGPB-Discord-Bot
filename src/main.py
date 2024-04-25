@@ -1,20 +1,19 @@
-import nextcord
+import os
+
 from nextcord.ext import commands
-from services.bot_events import LoadBotEvents
+from utilities.bot_events import LoadBotEvents
 
 from dotenv import load_dotenv
-import os
 
 
 bot: commands.Bot = commands.Bot() #Create the bot object
-
 
 def loadCommands() -> None:
     """
     Load all the commands (cogs).
     """
     for filename in os.listdir("src/cogs"):
-        if filename.endswith(".py"):
+        if filename.endswith(".py") and filename != "setup_dir_path.py":
             bot.load_extension(f"cogs.{filename[:-3]}") 
         
 

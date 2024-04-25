@@ -1,0 +1,7 @@
+Paths: 
+  command_descriptions: "./src/cogs/command_descriptions.json"
+
+
+Weather_API:
+  weather_data: "https://api.openweathermap.org/data/2.5/weather?q={}&units={}&APPID={}"
+  temp_unit: "metric"
