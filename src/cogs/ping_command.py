@@ -12,7 +12,7 @@ SetupDirPath()
 from src.utilities.data_manager import DataManager
 
 
-COMMAND_NAME: Final[str] = "wing"
+COMMAND_NAME: Final[str] = "ping"
 
 class Ping(commands.Cog):
     def __init__(self,bot: commands.Bot) -> None:
@@ -22,7 +22,7 @@ class Ping(commands.Cog):
         self.bot: commands.bot = bot #Initialize the bot
         
 
-    @nextcord.slash_command(name=COMMAND_NAME,description=DataManager().getCmdDescription(COMMAND_NAME))
+    @nextcord.slash_command(name=COMMAND_NAME,description=DataManager().getJsonData(COMMAND_NAME))
     async def ping(self,ctx: Interaction) -> None:
         """
         The Ping command - respond to the user "Pong!" + the bot latency in milliseconds.

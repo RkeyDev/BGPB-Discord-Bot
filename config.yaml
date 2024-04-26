@@ -1,6 +1,6 @@
 Paths: 
-  command_descriptions: "./src/cogs/command_descriptions.json"
-
+  command_descriptions: "./resources/json/command_descriptions.json"
+  weather_emojies: "./resources/json/weather_emojies.json"
 
 Weather_API:
   weather_data: "https://api.openweathermap.org/data/2.5/weather?q={}&units={}&APPID={}"

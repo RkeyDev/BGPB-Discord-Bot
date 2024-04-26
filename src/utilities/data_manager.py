@@ -17,17 +17,17 @@ class DataManager:
 
     def getConfigData(self) -> dict | None:
         """
-        Get config.yml file
+        Get config.yaml file
         """
         try:
             with open(os.getenv("CONFIG_YAML_PATH"),"r") as config_file:    
-                config_data: dict[str] = yaml.safe_load(config_file) #Get the 'config.yml' data
+                config_data: dict[str] = yaml.safe_load(config_file) #Get the 'config.yaml' data
 
         except (FileNotFoundError, TypeError) as e:
-            print("'config.yml' does not exist. please create the file or specify the correct path.\n")
-            return None #Return 'None' if 'config.yml' file is not found
+            print("'config.yaml' does not exist. please create the file or specify the correct path.\n")
+            return None #Return 'None' if 'config.yaml' file is not found
         
-        return config_data #Return the 'config.yml' data
+        return config_data #Return the 'config.yaml' data
 
 
 
@@ -41,8 +41,6 @@ class DataManager:
 
         if data_dict is not None:
             return data_dict.get(data) #Return the data if found
-        
-        
 
 
 
@@ -63,20 +61,20 @@ class DataManager:
     
 
 
-    def getCmdDescription(self,cmd_name: str) ->str:
+    def getJsonData(self,data_key: str,json_file_name: str = "command_descriptions") -> str:
         """
-        Get command descriptions.
+        Get json data.
         """
-        path: str = self.getPath("command_descriptions")
+        path: str = self.getPath(json_file_name)
         
         try:
-            with open(path,"r") as cmd_descriptions_file:
+            with open(path,"r") as json_file:
                 #Get the command description by the command's name
-                cmd_description: str = json.load(cmd_descriptions_file).get(cmd_name)
+                json_data: str = json.load(json_file).get(data_key)
 
         except (TypeError, FileNotFoundError) as e:
             print(f"An error occured while loading the JSON file: {e}")
             print(f"Please check if '{path}'is the correct path.\n")    
             return None #Return 'None' if json file could not be loaded.
             
-        return cmd_description #Return the command's description
+        return json_data #Return the command's description

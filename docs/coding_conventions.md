@@ -11,7 +11,7 @@ This file contains all of the coding conventions in this project.
 
 ## File naming
 ### Command classes
-Command classes will end with '_command'.
+Command classes will end with '_command'. 
 
 ### Tests
 Test codes will start with 'test_' following the name of the file. Example: 'test_data_manager.py'.

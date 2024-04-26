@@ -17,25 +17,37 @@ COMMAND_NAME: Final[str] = "weather"
 
 
 class Weather(commands.Cog):
+    data_manager: DataManager = DataManager() #Create data manager object
+
     def __init__(self,bot: commands.Bot) -> None:
         """
         This class represents the Weather command.
         """
         self.bot: commands.bot = bot #Initialize the bot
+        
 
-
-    @nextcord.slash_command(name=COMMAND_NAME,description=DataManager().getCmdDescription(COMMAND_NAME))
+    @nextcord.slash_command(name=COMMAND_NAME,description=data_manager.getJsonData(COMMAND_NAME))
     async def command(self,ctx: Interaction,city: str) -> None:
         """
         The Weather command - show the weather of a city.
         """
-        weather_api = WeatherApi() #Load the weather API
-        weather_details = weather_api.getWeatherDetails(city) #Get the weather details of a city
+        city: str = city.capitalize()
+        try:
+            weather_api = WeatherApi() #Load the weather API
+            weather_details = weather_api.getWeatherDetails(city) #Get the weather details of a certain city
+            
+            temp, weather_description = weather_details
+            weather_emoji = weather_api.getWeatherEmoji(weather_description)
 
-        #Send the temprature and the weather description
-        await ctx.send(
-            f"Weather in {city}:\nTemprature: {weather_details[0]}°C {weather_details[1]}"
-                       )
+            #Send the temprature and the weather description
+            await ctx.send(
+                f"Weather in {city}:\nTemprature: {temp}°C {weather_description} {weather_emoji}"
+                        )
+            
+        except KeyError as e:
+            #Send a message if the city is not found
+            await ctx.send(f"{city} is not a city on this planet. Please try a different city.")
+            
 
         
 

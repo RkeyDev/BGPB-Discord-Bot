@@ -1,0 +1,14 @@
+{
+    "mist": ":fog:",
+    "overcast clouds": ":cloud:",
+    "broken clouds": ":white_sun_cloud:",
+    "scattered clouds": ":cloud:",
+    "clear sky":":yellow_circle:",
+    "few clouds": ":white_sun_cloud:" ,
+    "shower rain": ":white_sun_rain_cloud:" ,
+    "rain": ":cloud_rain:" ,
+    "thunderstorm": ":thunder_cloud_rain:" ,
+    "snow": ":snowflake:",
+    "light rain": ":cloud_rain:"
+
+}

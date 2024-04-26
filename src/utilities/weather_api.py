@@ -32,3 +32,12 @@ class WeatherApi:
         return weather_data["main"].get("temp"), weather_data["weather"][0].get("description") 
     
 
+    def getWeatherEmoji(self, weather_description: str):
+        """
+        Return a weather emoji from the weather_emojies.json file.
+        
+        Return 'None' if 'weather_description' is not on the json file.
+        """
+        weather_emoji: str = DataManager().getJsonData(weather_description,"weather_emojies") 
+        
+        return weather_emoji if weather_emoji != None else ""
